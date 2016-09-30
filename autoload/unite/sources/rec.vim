@@ -599,7 +599,7 @@ function! s:source_file_git.gather_candidates(args, context) abort "{{{
   endif
 
   let command = g:unite_source_rec_git_command
-        \ . ' ls-files ' . join(a:args)
+        \ . ' ls-files --others --exclude-standard --cached ' . join(a:args)
   let args = vimproc#parser#split_args(command) + a:args
   if empty(args) || !executable(args[0])
     call unite#print_source_message('git command : "'.
